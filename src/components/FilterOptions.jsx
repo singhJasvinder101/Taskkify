@@ -24,7 +24,7 @@ const FilterOptions = ({ tasks, setTasks }) => {
   };
 
   const handleFilterSubmit = () => {
-    let filteredTasks = tasks.filter((task) => {
+    let filteredTasks = tasks?.filter((task) => {
       if (filter.assignee && task.assignee !== filter.assignee) {
         return false;
       }
@@ -44,13 +44,13 @@ const FilterOptions = ({ tasks, setTasks }) => {
   };
 
   const handleResetFilters = () => {
+    setTasks(JSON.parse(localStorage.getItem("tasks")));
     setFilter({
       assignee: "",
       startDate: "",
       endDate: "",
       priority: "",
     });
-    setTasks(JSON.parse(localStorage.getItem("tasks")));
   };
 
   return (
@@ -103,7 +103,13 @@ const FilterOptions = ({ tasks, setTasks }) => {
       <Button onClick={handleFilterSubmit} colorScheme="blue" mt={4}>
         Apply Filters
       </Button>
-      <Button onClick={handleResetFilters} colorScheme="gray" mt={4} ml={4}>
+      <Button
+        isDisabled={tasks?.length === 0}
+        onClick={handleResetFilters}
+        colorScheme="gray"
+        mt={4}
+        ml={4}
+      >
         Reset Filters
       </Button>
     </div>

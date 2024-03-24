@@ -18,6 +18,7 @@ function Board() {
     if (storedTasks) {
       setTasks(JSON.parse(storedTasks));
     } else {
+      localStorage.setItem("tasks", JSON.stringify(sampletasks));
       setTasks(sampletasks);
     }
     setLoading(false);
@@ -31,6 +32,7 @@ function Board() {
       source.droppableId === destination.droppableId
     )
       return;
+    // console.log(sourceTasks, destinationTasks)
 
     const updatedTasks = [...tasks];
     const sourceTasks = updatedTasks.filter(
@@ -39,8 +41,6 @@ function Board() {
     const destinationTasks = updatedTasks.filter(
       (task) => task.status === destination.droppableId.split("_")[0]
     );
-
-    // console.log(sourceTasks, destinationTasks)
 
     // destructuring the sourcetasks with movedtask
     const [movedTask] = sourceTasks.splice(source.index, 1);
@@ -79,7 +79,7 @@ function Board() {
               <div>Error: {error.message}</div>
             </Center>
           </LazyLoadHandler>
-        ) : tasks.length ? (
+        ) : tasks?.length ? (
           <DragDropContext onDragEnd={handleDragEnd}>
             <Box className="tasks">
               {loading && <div className="loading-overlay"></div>}
