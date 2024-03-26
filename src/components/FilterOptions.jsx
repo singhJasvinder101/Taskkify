@@ -104,7 +104,12 @@ const FilterOptions = ({ tasks, setTasks }) => {
         Apply Filters
       </Button>
       <Button
-        isDisabled={tasks?.length === 0}
+        isDisabled={
+          filter?.assignee?.length === 0 
+          && filter?.startDate?.length === 0
+          && filter?.endDate?.length === 0
+          && filter?.priority?.length === 0
+        }
         onClick={handleResetFilters}
         colorScheme="gray"
         mt={4}
