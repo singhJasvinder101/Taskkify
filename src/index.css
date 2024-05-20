@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
+
+
 * {
     margin: 0;
     padding: 0;
@@ -444,4 +447,11 @@ input:focus {
     .tasks {
         grid-template-columns: 100%;
     }
+}
+
+.cont{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
 }

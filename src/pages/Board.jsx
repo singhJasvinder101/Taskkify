@@ -7,11 +7,23 @@ import { DragDropContext } from "react-beautiful-dnd";
 import { sampletasks } from "../data/db";
 import Navbar from "../components/Navbar";
 import FilterOptions from "../components/FilterOptions";
+import { useNavigate } from "react-router-dom";
 
+const isAuthenticated = !!localStorage.getItem("user");
+console.log(isAuthenticated)
 function Board() {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState({ status: false, message: "" });
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/todo");
+    }else 
+      navigate("/login");
+
+  }, [navigate]);
 
   useEffect(() => {
     const storedTasks = localStorage.getItem("tasks");
