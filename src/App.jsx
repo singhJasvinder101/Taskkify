@@ -13,7 +13,7 @@ function App() {
     <Router>
       <LazyLoadHandler>
         <Routes>
-          <Route exact path="/todo" element={<Board />} />
+          <Route exact path="/" element={<Board />} />
           <Route exact path="/login" element={<LoginSign />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

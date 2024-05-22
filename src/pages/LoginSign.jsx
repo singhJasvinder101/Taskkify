@@ -16,20 +16,20 @@ const LoginSign = () => {
 
     useEffect(() => {
         if (isAuthenticated) {
-            navigate("/todo");
+            navigate("/");
         }
         
     }, [navigate]);
 
     const handleSignUp = () => {
         localStorage.setItem("user", JSON.stringify({ email, password }));
-        navigate("/todo");
+        navigate("/");
     };
 
     const handleSignIn = () => {
         const user = JSON.parse(localStorage.getItem("user"));
         if (user && user.email === email && user.password === password) {
-            navigate("/todo");
+            navigate("");
         } else {
             alert("Invalid email or password");
         }

@@ -10,7 +10,7 @@ import FilterOptions from "../components/FilterOptions";
 import { useNavigate } from "react-router-dom";
 
 const isAuthenticated = !!localStorage.getItem("user");
-console.log(isAuthenticated)
+// console.log(isAuthenticated)
 function Board() {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -19,7 +19,7 @@ function Board() {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate("/todo");
+      navigate("/");
     }else 
       navigate("/login");
 
